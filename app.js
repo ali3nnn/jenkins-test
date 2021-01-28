@@ -1,11 +1,17 @@
 let express = require('express');
+let path = require('path');
 let app = express();
 
+// app.use(express.static(path.join(__dirname,'src')));
+app.use(express.static(path.join(__dirname,'public')));
+
+
 app.get('/', function (req, res) {
-   res.send('jenkins!!! yuhooooo! update! auto reload pm2!!');
+   // console.log(path.join(__dirname + '/index.html'));
+   res.sendFile(path.join(__dirname + '/index.html'));
 })
 
-let server = app.listen(3005, function () {
+let server = app.listen(9949, function () {
     let host = server.address().address
     let port = server.address().port
    console.log("Example app listening at http://%s:%s", host, port)
